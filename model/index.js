@@ -7,12 +7,10 @@ const contacts = require("./contacts.json");
 const contactsPath = path.join(__dirname, "./contacts.json");
 
 const listContacts = (req, res) => {
-  const contacts = require("./contacts.json");
   res.json(contacts);
 };
 
 const getContactById = (req, res) => {
-  const contacts = require("./contacts.json");
   const { contactId } = req.params;
 
   const selectContact = contacts.find(
