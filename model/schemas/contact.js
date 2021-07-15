@@ -12,9 +12,11 @@ const contactSchema = Schema(
         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
         "Please fill a valid email address",
       ],
+      required: [true, "Set email for contact"],
     },
     phone: {
       type: String,
+      required: [true, "Set phone for contact"],
     },
     favorite: {
       type: Boolean,

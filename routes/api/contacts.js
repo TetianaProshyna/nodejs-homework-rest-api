@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ctrl = require("../../controllers");
+const { validContactUpdateStatus } = require("../../utils/validate/contacts");
 
 router.get("/", ctrl.listContacts);
 
@@ -11,6 +12,10 @@ router.post("/", ctrl.addContact);
 router.delete("/:contactId", ctrl.removeContact);
 
 router.patch("/:contactId", ctrl.updateContact);
-router.patch("/:contactId/favorite", ctrl.updateStatusContact);
+router.patch(
+  "/:contactId/favorite",
+  validContactUpdateStatus,
+  ctrl.updateContact
+);
 
 module.exports = router;
