@@ -1,15 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const api = require("../../model");
+const ctrl = require("../../controllers");
+const { validContactUpdateStatus } = require("../../utils/validate/contacts");
 
-router.get("/", api.listContacts);
+router.get("/", ctrl.listContacts);
 
-router.get("/:contactId", api.getContactById);
+router.get("/:contactId", ctrl.getContactById);
 
-router.post("/", api.addContact);
+router.post("/", ctrl.addContact);
 
-router.delete("/:contactId", api.removeContact);
+router.delete("/:contactId", ctrl.removeContact);
 
-router.patch("/:contactId", api.updateContact);
+router.patch("/:contactId", ctrl.updateContact);
+router.patch(
+  "/:contactId/favorite",
+  validContactUpdateStatus,
+  ctrl.updateContact
+);
 
 module.exports = router;
