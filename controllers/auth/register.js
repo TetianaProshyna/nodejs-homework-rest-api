@@ -7,7 +7,7 @@ const register = async (req, res, next) => {
       res.status(409).json({
         status: "error",
         code: 409,
-        message: "Already register",
+        message: "Email in use",
       });
       return;
     }

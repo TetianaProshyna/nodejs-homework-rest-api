@@ -4,6 +4,7 @@ const contactSchema = Schema(
     name: {
       type: String,
       minlength: [2, "Name cannot be less then 2 letters"],
+      unique: true,
       required: [true, "Set name for contact"],
     },
     email: {
@@ -25,6 +26,7 @@ const contactSchema = Schema(
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
+      required: [true, "No userId for contact"],
     },
   },
   { versionKey: false, timestamps: true }

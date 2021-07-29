@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const ctrl = require("../../controllers/users");
+const guard = require("../../middlewares/guard");
 
-router.post("/register", express.json(), ctrl.register);
-router.post("/login", express.json(), ctrl.login);
-// router.get("/logout", ctrl.logout);
+router.get("/current", express.json(), guard, ctrl.getCurrentUserData);
 
 module.exports = router;
