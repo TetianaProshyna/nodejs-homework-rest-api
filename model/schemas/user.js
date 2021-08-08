@@ -22,6 +22,15 @@ const userSchema = Schema({
       return gravatar.url(this.email, { size: "250" }, true);
     },
   },
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
+  },
+
   token: {
     type: String,
     default: null,
