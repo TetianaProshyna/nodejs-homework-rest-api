@@ -4,12 +4,15 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const limiterAPI = require("./middlewares/rates/limiterAPI");
+const path = require("path");
 
 const contactsRouter = require("./routes/api/contacts");
 const authRouter = require("./routes/api/auth");
 const usersRouter = require("./routes/api/users");
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(logger(formatsLogger));
 app.use(helmet());
